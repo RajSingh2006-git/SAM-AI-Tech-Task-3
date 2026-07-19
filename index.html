@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForkFinder – Restaurant Recommendation System</title>
+  <meta name="description" content="Discover the best restaurants near you with ForkFinder. Filter by location, cuisine, and rating to find your perfect dining experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       WELCOME SPLASH SCREEN
+  ══════════════════════════════════════ -->
+  <div class="welcome-overlay" id="welcome-overlay">
+    <div class="welcome-particles" id="welcome-particles"></div>
+    <div class="welcome-box" id="welcome-box">
+      <div class="welcome-dish-ring">
+        <div class="dish-orbit dish-orbit-1">
+          <span class="dish-emoji">🍕</span>
+        </div>
+        <div class="dish-orbit dish-orbit-2">
+          <span class="dish-emoji">🍣</span>
+        </div>
+        <div class="dish-orbit dish-orbit-3">
+          <span class="dish-emoji">🍛</span>
+        </div>
+        <div class="dish-orbit dish-orbit-4">
+          <span class="dish-emoji">🌮</span>
+        </div>
+        <div class="welcome-logo-circle">
+          <span class="welcome-logo-icon">🍴</span>
+        </div>
+      </div>
+      <div class="welcome-text">
+        <div class="welcome-greeting" id="welcome-greeting">Good Evening!</div>
+        <h1 class="welcome-title">Welcome to <span>ForkFinder</span></h1>
+        <p class="welcome-sub">Your AI-powered guide to unforgettable dining experiences. Discover restaurants handpicked for your taste.</p>
+        <div class="welcome-features">
+          <div class="wf-item"><span class="wf-icon">📍</span> Filter by City</div>
+          <div class="wf-item"><span class="wf-icon">🍽️</span> 12 Cuisines</div>
+          <div class="wf-item"><span class="wf-icon">⭐</span> Top Rated</div>
+        </div>
+        <button class="welcome-cta" id="welcome-cta">
+          <span>Let's Explore</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <header class="hero">
+    <!-- Food background image -->
+    <div class="hero-bg-img"></div>
+    <div class="hero-bg-overlay"></div>
+    <!-- Floating food emoji decorations -->
+    <div class="hero-floats">
+      <span class="float-item fi-1">🍕</span>
+      <span class="float-item fi-2">🥗</span>
+      <span class="float-item fi-3">🍜</span>
+      <span class="float-item fi-4">🍣</span>
+      <span class="float-item fi-5">🥩</span>
+      <span class="float-item fi-6">🍰</span>
+      <span class="float-item fi-7">🌮</span>
+      <span class="float-item fi-8">🥘</span>
+    </div>
+
+    <nav class="navbar">
+      <div class="logo">🍴 <span>ForkFinder</span></div>
+      <div class="nav-pill">Restaurant Recommendation System</div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Find Your<br /><em>Perfect Table</em></h1>
+        <p class="hero-sub">Filter by location, cuisine &amp; rating — we surface the restaurants made for you.</p>
+        <div class="hero-stats">
+          <div class="stat card-3d">
+            <span class="stat-num" id="stat-total">0</span>
+            <span class="stat-label">Restaurants</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat card-3d">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Cuisines</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat card-3d">
+            <span class="stat-num">8</span>
+            <span class="stat-label">Cities</span>
+          </div>
+        </div>
+        <a href="#filter-section" class="cta-btn">
+          <span>Explore Restaurants</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+      </div>
+      <div class="hero-chef">
+        <div class="chef-glow"></div>
+        <img src="chef.jpg" alt="Our Expert Chef" class="chef-img" />
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span class="scroll-arrow"></span>
+      scroll to discover
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       FILTER PANEL
+  ══════════════════════════════════════ -->
+  <section id="filter-section" class="filter-section">
+    <div class="container">
+      <div class="section-label">🎯 Smart Filters</div>
+      <h2 class="section-title">Tell us what you're looking for</h2>
+
+      <div class="filter-card filter-3d">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label for="filter-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Location / City
+            </label>
+            <select id="filter-location"><option value="">All Cities</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-cuisine">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+              Cuisine Type
+            </label>
+            <select id="filter-cuisine"><option value="">All Cuisines</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Min Rating
+            </label>
+            <div class="rating-slider-wrap">
+              <input type="range" id="filter-rating" min="1" max="5" step="0.5" value="1" />
+              <span class="rating-val" id="rating-display">⭐ 1.0+</span>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label for="filter-price">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              Price Range
+            </label>
+            <select id="filter-price">
+              <option value="">Any Price</option>
+              <option value="$">$ – Budget</option>
+              <option value="$$">$$ – Moderate</option>
+              <option value="$$$">$$$ – Upscale</option>
+              <option value="$$$$">$$$$ – Fine Dining</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <div class="search-wrap">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="search-input" placeholder="Search by name, dish, or keyword…" />
+          </div>
+          <button class="filter-btn" id="apply-filters">Find Restaurants</button>
+          <button class="reset-btn" id="reset-filters">Reset</button>
+        </div>
+
+        <div class="quick-tags">
+          <span class="tag-label">Quick picks:</span>
+          <button class="tag" data-cuisine="Italian">🍕 Italian</button>
+          <button class="tag" data-cuisine="Japanese">🍣 Japanese</button>
+          <button class="tag" data-cuisine="Indian">🍛 Indian</button>
+          <button class="tag" data-cuisine="Mexican">🌮 Mexican</button>
+          <button class="tag" data-cuisine="Chinese">🥢 Chinese</button>
+          <button class="tag" data-rating="4">⭐ Top Rated</button>
+          <button class="tag" data-price="$">💸 Budget</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       RESULTS
+  ══════════════════════════════════════ -->
+  <section class="results-section">
+    <div class="container">
+      <div class="results-header">
+        <div>
+          <div class="section-label">🍽️ Recommendations</div>
+          <h2 class="section-title" id="results-title">Showing all restaurants</h2>
+        </div>
+        <div class="sort-wrap">
+          <label for="sort-select">Sort by</label>
+          <select id="sort-select">
+            <option value="rating-desc">Highest Rated</option>
+            <option value="rating-asc">Lowest Rated</option>
+            <option value="name-asc">Name A–Z</option>
+            <option value="name-desc">Name Z–A</option>
+            <option value="price-asc">Price Low–High</option>
+            <option value="price-desc">Price High–Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="no-results hidden" id="no-results">
+        <div class="no-results-icon">🍽️</div>
+        <h3>No restaurants found</h3>
+        <p>Try adjusting your filters or search query.</p>
+        <button class="filter-btn" id="no-results-reset">Clear Filters</button>
+      </div>
+
+      <div class="cards-grid" id="cards-grid"></div>
+
+      <div class="load-more-wrap" id="load-more-wrap">
+        <button class="load-more-btn" id="load-more-btn">Load More Restaurants</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DETAIL MODAL
+  ══════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-hero" id="modal-hero"></div>
+      <div class="modal-body">
+        <div class="modal-tags" id="modal-tags"></div>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-meta" id="modal-meta"></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-info-grid" id="modal-info-grid"></div>
+        <div class="modal-review-section">
+          <h4>Top Reviews</h4>
+          <div class="modal-reviews" id="modal-reviews"></div>
+        </div>
+        <div class="modal-actions">
+          <button class="cta-btn modal-reserve-btn">
+            <span>Reserve a Table</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="outline-btn modal-directions-btn">Get Directions</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">🍴 <span>ForkFinder</span></div>
+      <div class="footer-divider"></div>
+      <div class="footer-thankyou">
+        <span class="thankyou-emoji">🙏</span>
+        <span class="thankyou-text">Thank You for Visiting Our Website!</span>
+        <span class="thankyou-emoji">🍽️</span>
+      </div>
+      <p class="footer-sub">We hope you found your perfect dining experience.<br/>Come back anytime for more delicious discoveries.</p>
+      <p class="footer-copy">Restaurant Recommendation System &nbsp;·&nbsp; Built with ❤️</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
